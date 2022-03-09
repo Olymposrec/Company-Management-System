@@ -1,0 +1,75 @@
+﻿@model UsersApplicationListModel
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+}
+<div class="card shadow mt-5">
+    <div class="card-header bg-dark">
+        Users Application List
+    </div>
+    <div class="card-body">
+        <table id="dataTable" class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <td style="width:200px;">FirstName</td>
+                    <td style="width:200px;">LastName</td>
+                    <td style="width:500px;">UserName</td>
+                    <td style="width:500px;">PhoneNumber</td>
+                    <td style="width:500px;">Email</td>
+                    <td style="width: 50px">EmailConfirmed</td>
+                    <td style="width:300px;">CompanyName</td>
+                    <td style="width:min-content;">Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.UsersApplications.Count() > 0)
+                {
+                    @foreach (var application in Model.UsersApplications)
+                    {
+                        if (application.ApplicationStatus == UsersApplication.EnumApplicationStatus.Waiting && application.EmailConfirmed == false && application.isDeleted == false)
+                        {
+                            <tr class="@(application.ApplicationStatus==UsersApplication.EnumApplicationStatus.Waiting ? "":"bg-success")">
+                                <td>@application.FirstName</td>
+                                <td>@application.LastName</td>
+                                <td>@application.UserName</td>
+                                <td>@application.PhoneNumber</td>
+                                <td>@application.Email</td>
+                                <td>@application.EmailConfirmed</td>
+                                <td>@application.CompanyName</td>
+                                <td>
+                                    <form action="/Admin/ApplicationConfirm" method="post" class="d-inline">
+                                        <input type="hidden" name="userId" value="@(application.UserId)" />
+                                        <input type="hidden" name="applicationId" value="@(application.Id)" />
+                                        <button type="submit" class="btn btn-success btn-sm" @(application.ApplicationStatus == UsersApplication.EnumApplicationStatus.Waiting ? "" : "hidden" )>
+                                            <i class="fas fa-check-circle"></i>
+                                        </button>
+                                    </form>
+                                    <a href="/Admin/ApplicationsEdit/@application.UserId" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                    <form action="/Admin/ApplicationUserDelete" method="post" class="d-inline">
+                                        <input type="hidden" name="userId" value="@(application.UserId)" />
+                                        <input type="hidden" name="applicationId" value="@(application.Id)" />
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+
+
+
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No Applications</h3>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

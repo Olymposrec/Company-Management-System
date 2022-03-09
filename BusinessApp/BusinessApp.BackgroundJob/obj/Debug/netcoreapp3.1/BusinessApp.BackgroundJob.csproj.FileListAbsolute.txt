@@ -1,0 +1,17 @@
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.AssemblyInfo.cs
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.deps.json
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.dll
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.pdb
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.Business.dll
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.DataAccess.dll
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.Entity.dll
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.Business.pdb
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.DataAccess.pdb
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\bin\Debug\netcoreapp3.1\BusinessApp.Entity.pdb
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.csproj.CopyComplete
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.dll
+C:\Users\dell\source\repos\BusinessApp\BusinessApp.BackgroundJob\obj\Debug\netcoreapp3.1\BusinessApp.BackgroundJob.pdb

@@ -1,0 +1,85 @@
+﻿@model LogsViewModel
+
+@section Styles{
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#logTable').DataTable();
+        });
+    </script>
+}
+<div class="card shadow mt-5">
+    <div class="card-header bg-dark">
+        <a href="#collapseCompanyList" class="card-link p-1" data-toggle="collapse">
+            Logs
+        </a>
+    </div>
+    <div id="collapseCompanyList" class="collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="logTable" class="table table-bordered mt-3 w-100">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th style="overflow: hidden" class="w-25">Message</th>
+                                <th style="width:70px" class="w-25">MessageTemplate</th>
+                                <th style="width: 50px; height: 50px;">Level</th>
+                                <th style="width: 100px;">TimeStamp</th>
+                                <th style="width:200px" class="w-25">Exception</th>
+                                <th style="width: 200px ;" class="w-25">Properties</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Logs.Count() > 0)
+                            {
+                                @foreach (var log in Model.Logs)
+                                {
+                                    <tr>
+                                        <td>@log.Id</td>
+                                        <td><div style="line-height: 50px; max-height: 50px; overflow: hidden; text-overflow: ellipsis;">@log.Message</div> </td>
+                                        <td>@log.MessageTemplate</td>
+
+                                        @if (log.Level == "Warning")
+                                        {
+                                            <td class="bg-warning">
+                                                @log.Level
+                                            </td>
+                                        }
+                                        @if (log.Level == "Error")
+                                        {
+                                            <td class="bg-danger">
+                                                @log.Level
+                                            </td>
+                                        }
+                                        @if (log.Level == "Information")
+                                        {
+                                            <td class="bg-info">
+                                                @log.Level
+                                            </td>
+                                        }
+
+                                        <td>@log.TimeStamp</td>
+                                        <td><div style="line-height: 50px; max-height:50px;  max-width: 400px; overflow: hidden; text-overflow:ellipsis">@log.Exception</div> </td>
+                                        <td><div style="line-height: 50px; max-height: 50px; max-width: 400px; overflow: hidden; text-overflow: ellipsis">@log.Properties</div> </td>
+                                    </tr>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <h3>No Logsg</h3>
+                                </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

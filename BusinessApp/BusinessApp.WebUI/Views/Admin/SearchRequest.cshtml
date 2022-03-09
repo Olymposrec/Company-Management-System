@@ -1,0 +1,71 @@
+﻿@model RequestsListModel
+@section Styles{
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#UserTable').DataTable();
+        });
+    </script>
+}
+
+@if (User.IsInRole("Employee"))
+{
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" on href="/Admin/RequestList">All</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/EmployeeRequestList">Assigned to me </a>
+        </li>
+    </ul>
+}
+
+<partial name="_Search" />
+
+<div class="card  shadow mt-5">
+    <div class="card-header bg-dark">
+        Users Application List
+    </div>
+    <div class="card-body">
+        <table id="UserTable" class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <td style="width:300px;">Title</td>
+                    <td style="width:250px;">Request Date</td>
+                    <td style="width:150px;">Request Status</td>
+                    <td style="width:min-content;">Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Requests.Count() > 0)
+                {
+                    foreach (var request in Model.Requests)
+                    {
+                        <tr class="@(request.RequestStatus==Request.EnumRequestStatus.Waiting ? "bg-info":
+                                       request.RequestStatus==Request.EnumRequestStatus.Accepted ? "bg-success":
+                                       request.RequestStatus==Request.EnumRequestStatus.Closed ? "bg-danger":"")">
+                            @*<td>@Model.Services.Where(c => c.Id == request.FirmsServiceId==request.FirmsServicesServiceId).FirstOrDefault().ServiceName.ToString()</td>*@
+                            <td>@request.Title</td>
+                            <td>@request.RequestDate</td>
+                            <td>@request.RequestStatus</td>
+                            <td>
+                                <a href="/Admin/RequestDetail/@request.Id" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No Applications</h3>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

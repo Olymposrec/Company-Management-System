@@ -1,0 +1,63 @@
+﻿@model CompanyModel
+
+
+<div class="card shadow mt-5">
+    <div class="card-header bg-dark">
+        <a href="#collapseCompanyList" class="card-link p-1" data-toggle="collapse">
+            Companies List
+        </a>
+    </div>
+    <div id="collapseCompanyList" class="collapse show">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="dataTable" class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td style="width:30px;">Name</td>
+                                <td style="width:30px;">TaxNumber</td>
+                                <td style="width:30px;">PhoneNumber</td>
+                                <td style="width:30px;">Email</td>
+                                <td style="width:max-content;">Options</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Companies.Count() > 0)
+                            {
+                                @foreach (var company in Model.Companies)
+                                {
+                                    if (company.isDeleted == false)
+                                    {
+                                        <tr>
+                                            <td style="width:20px;">@company.Id</td>
+                                            <td style="width:150px;">@company.Name</td>
+                                            <td style="width:150px;">@company.TaxNumber</td>
+                                            <td style="width:150px;">@company.PhoneNumber</td>
+                                            <td style="width:150px;">@company.Email</td>
+                                            <td style="width:20px;">
+                                                <a href="/Admin/Companies/@company.Id" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                <form action="/Admin/CompanyDelete" method="post" class="d-inline">
+                                                    <input type="hidden" name="Id" value="@company.Id" />
+                                                    <input type="hidden" name="Name" value="@company.Name" />
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <h3>No Company</h3>
+                                </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

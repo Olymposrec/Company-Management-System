@@ -1,0 +1,150 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\bootstrap-fileinput-master\CHANGE.md" />
+    <None Include="wwwroot\bootstrap-fileinput-master\css\fileinput-rtl.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\css\fileinput-rtl.min.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\css\fileinput.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\css\fileinput.min.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\img\loading-sm.gif" />
+    <None Include="wwwroot\bootstrap-fileinput-master\img\loading.gif" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\fileinput.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\fileinput.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ar.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\az.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\bg.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ca.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\cr.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\cs.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\da.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\de.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\el.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\es.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\et.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\fa.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\fi.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\fr.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\gl.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\he.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\hu.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\id.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\it.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ja.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ka.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\kr.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\kz.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\LANG.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\lt.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\lv.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\nl.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\no.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\pl.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\pt-BR.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\pt.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ro.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\ru.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\sk.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\sl.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\sr-latn.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\sv.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\th.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\tr.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\uk.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\uz-cyrl.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\uz.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\vi.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\zh-TW.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\locales\zh.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\plugins\piexif.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\plugins\piexif.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\plugins\sortable.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\js\plugins\sortable.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\LICENSE.md" />
+    <None Include="wwwroot\bootstrap-fileinput-master\nuget\build.bat" />
+    <None Include="wwwroot\bootstrap-fileinput-master\nuget\Package.nuspec" />
+    <None Include="wwwroot\bootstrap-fileinput-master\README.md" />
+    <None Include="wwwroot\bootstrap-fileinput-master\scss\fileinput-rtl.scss" />
+    <None Include="wwwroot\bootstrap-fileinput-master\scss\fileinput.scss" />
+    <None Include="wwwroot\bootstrap-fileinput-master\scss\themes\explorer-fas\theme.scss" />
+    <None Include="wwwroot\bootstrap-fileinput-master\scss\themes\explorer-fa\theme.scss" />
+    <None Include="wwwroot\bootstrap-fileinput-master\scss\themes\explorer\theme.scss" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\bs5\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\bs5\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fas\theme.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fas\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fas\theme.min.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fas\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fa\theme.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fa\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fa\theme.min.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer-fa\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer\theme.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer\theme.min.css" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\explorer\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\fas\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\fas\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\fa\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\fa\theme.min.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\gly\theme.js" />
+    <None Include="wwwroot\bootstrap-fileinput-master\themes\gly\theme.min.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="bootstrap" Version="5.1.3" />
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
+    <PackageReference Include="Hangfire" Version="1.7.28" />
+    <PackageReference Include="jQuery.Validation" Version="1.19.3" />
+    <PackageReference Include="jQuery.Validation.Unobtrusive" Version="2.0.20710" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessApp.Business\BusinessApp.Business.csproj" />
+  </ItemGroup>
+
+</Project>

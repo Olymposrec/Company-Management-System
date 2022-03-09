@@ -1,0 +1,134 @@
+﻿@model RequestsModel
+
+    <div class="card mb-2 mt-2">
+        <div class="card-header bg-@(Model.Request.RequestStatus==Request.EnumRequestStatus.Waiting ? "info":
+                Model.Request.RequestStatus==Request.EnumRequestStatus.Closed ? "danger":"warning")">
+            @Model.Request.Title -
+            <span><small>Request @Model.Request.RequestStatus</small></span>
+        </div>
+        <div class="card-body">
+            <p>@Html.Raw(Model.Request.Description)</p>
+        </div>
+    </div>
+
+<form asp-controller="Request" asp-action="RequestDetail" method="post">
+    
+    <div class="card mb-2 mt-2">
+        <input type="hidden" name="userId" value="@Model.User.Id" />
+        <input type="hidden" name="requestId" value="@Model.Request.Id" />
+        <div class="card-header bg-@(Model.Request.RequestStatus==Request.EnumRequestStatus.Waiting ? "info":
+                Model.Request.RequestStatus==Request.EnumRequestStatus.Closed ? "danger":"warning")">
+            <i class="fas fa-comment"></i>
+            @Model.User.UserName
+
+        </div>
+        <div class="card-body overflow-auto" style="background-color:whitesmoke; height:450px">
+
+            @if (Model.RequestResponses != null)
+            {
+
+                @foreach (var response in Model.RequestResponses)
+                {
+
+
+                    @if (Model.Request.Id == response.RequestId)
+                    {
+
+
+                        @if (response.ResponseType == RequestResponse.EnumResponseType.Receiver)
+                        {
+                            <div class="row text-right  justify-content-end mt-3">
+                                <div class="col-sm-6 col-xs-6 rounded shadow ml-auto">
+                                    <div class="p-2 messages msg_receive">
+                                        <p class="card-text">
+                                            @Html.Raw(response.Response)
+                                        </p>
+                                        <time class="text-muted text-left"> @(response.ResponseDate)</time>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-1">
+                                    <img src="/img/avatar2.png" class="img-responsive rounded-circle" width="50" height="50">
+                                </div>
+                            </div>
+                        }
+                        else if (response.ResponseType == RequestResponse.EnumResponseType.Sender)
+                        {
+                            <div class="row text-left mt-3  justify-content-start mb-2">
+                                <div class="col-sm-1 col-xs-1 avatar">
+                                    <img src="/img/avatar.png" class="img-responsive rounded-circle" width="50" height="50">
+                                </div>
+                                <div class="col-sm-6 col-xs-6 rounded shadow mr-auto" style="background-color: #d9c8c0">
+                                    <div class="p-2 messages msg_sent">
+                                        <p class="card-text">
+                                            @Html.Raw(response.Response)
+                                        </p>
+                                        <time class="text-muted text-left"> @(response.ResponseDate)</time>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+            }
+        </div>
+        <div class="card-footer">
+            <div class="input-group @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled":"")">
+                <input id="btn-input" asp-for="RequestResponse.Response"   type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                <span class="input-group-btn">
+                    <button type="submit"  @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled":"") name="sendResponse" value="sendResponse" class="btn btn-primary btn" id="btn-chat"><i class="fas fa-paper-plane"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="card  shadow mt-3 mb-3">
+    <div class="card-header bg-dark">
+        Files
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="dataTable" class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td style="width:30px;">File Name</td>
+                            <td style="width:30px;">File Extension</td>
+                            <td style="width:max-content;">Download Link</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.FilesDownload.Count() > 0)
+                        {
+                            @foreach (var file in Model.FilesDownload)
+                            {
+                                if (Model.Request.Id == file.RequestId)
+                                {
+                                    <tr>
+                                        <td style="width:20px;">@file.Id</td>
+                                        <td style="width:150px;">@file.FileName</td>
+                                        <td style="width:150px;">@file.FileExtension</td>
+                                        <td style="width:150px;">
+                                            <a href="~/files/@file.FileName" download>
+                                                <button type="button" class="btn btn-primary">Download</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <h3>No File</h3>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

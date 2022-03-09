@@ -1,0 +1,321 @@
+﻿@model RequestsModel
+
+<form asp-controller="Admin" asp-action="RequestDetail" method="post">
+    <div class="card mb-3 mt-3 display-5 rounded-top">
+        <div class="card">
+            <div class="card-header bg-@(Model.Request.RequestStatus==Request.EnumRequestStatus.Waiting ? "info":
+                Model.Request.RequestStatus==Request.EnumRequestStatus.Closed ? "danger":"warning")">
+                @Model.Request.Title -
+                <span><small>Request @Model.Request.RequestStatus</small></span>
+            </div>
+        </div>
+        <div class="card-body">
+            <p>@Html.Raw(Model.Request.Description)</p>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="input-group-text" for="departmentId">Department Name</label>
+                        <select name="departmentId" id="departmentId" class="custom-select col-sm-6" for="departmentId">
+                            @foreach (var department in Model.Departments)
+                            {
+                                @if (Model.Request.DepartmentId == department.Id)
+                                {
+                                    <option selected value="@department.Id"> @department.Name </option>
+
+                                }
+                                else
+                                {
+                                    <option value="@department.Id"> @department.Name </option>
+                                }
+                            }
+                        </select>
+                        <button type="submit" name="defineDepartmentToRequest" value="defineDepartmentToRequest"
+                                @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "" ) class="btn btn-success">
+                            <i class="fas fa-play-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="input-group-text" for="serviceId">Service Name</label>
+                        <select name="serviceId" for="serviceId" id="serviceId" class="custom-select col-sm-6">
+                            @foreach (var companyService in Model.CompaniesServices)
+                            {
+                                @foreach (var service in Model.Services)
+                                {
+                                    @if (companyService.CompanyId == Model.User.CompanyId && companyService.ServiceId == service.Id)
+                                    {
+                                        if (Model.Request.CompaniesServiceId == companyService.Id)
+                                        {
+                                            <option selected value="@service.Id"> @service.ServiceName </option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@service.Id"> @service.ServiceName </option>
+                                        }
+                                    }
+                                }
+                            }
+                        </select>
+                        <button type="submit" name="defineServiceToRequest" value="RequestDefineService"
+                                @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "" ) class="btn btn-success">
+                            <i class="fas fa-play-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                    {
+                        <div class="row">
+                            <label class="input-group-text" for="employeeId">Employee Name</label>
+                            <select name="employeeId" id="employeeId" class="custom-select col-sm-6" for="employeeId">
+                                <option selected value="">Select A Employee</option>
+                                @foreach (var user in Model.Users)
+                                {
+                                    @foreach (var employeeDepartments in Model.EmployeeDepartments)
+                                    {
+                                        @if (employeeDepartments.DepartmentId == Model.Request.DepartmentId && employeeDepartments.EmployeeId == user.Id)
+                                        {
+                                            <option value="@user.Id"> @user.FirstName @user.LastName </option>
+                                        }
+                                    }
+                                }
+                            </select>
+                            <button type="submit" name="defineEmployeeToRequest" value="defineEmployeeToRequest"
+                                    @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "" ) class="btn btn-success">
+                                <i class="fas fa-play-circle"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-2 mt-2">
+        <input type="hidden" name="userId" value="@Model.User.Id" />
+        <input type="hidden" name="requestId" value="@Model.Request.Id" />
+        <div class="card-header bg-@(Model.Request.RequestStatus==Request.EnumRequestStatus.Waiting ? "info":
+                Model.Request.RequestStatus==Request.EnumRequestStatus.Closed ? "danger":"warning")">
+            <i class="fas fa-comment"></i>
+            @Model.User.UserName
+
+        </div>
+        <div class="card-body overflow-auto" style="background-color:whitesmoke; height:450px">
+
+            @if (Model.RequestResponses != null)
+            {
+                @foreach (var response in Model.RequestResponses)
+                {
+                    @if (Model.Request.Id == response.RequestId)
+                    {
+                        @if (response.ResponseType == RequestResponse.EnumResponseType.Sender)
+                        {
+                            <div class="row text-right  justify-content-end mt-3">
+                                <div class="col-sm-6 col-xs-6 rounded shadow ml-auto">
+                                    <div class="p-2 messages msg_receive">
+                                        <p class="card-text">
+                                            @Html.Raw(response.Response)
+                                        </p>
+                                        <time class="text-muted text-left"> @(response.ResponseDate)</time>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 col-xs-1">
+                                    <img src="/img/avatar.png" class="img-responsive rounded-circle" width="50" height="50">
+                                </div>
+                            </div>
+                        }
+                        else if (response.ResponseType == RequestResponse.EnumResponseType.Receiver)
+                        {
+                            <div class="row text-left mt-3  justify-content-start mb-2">
+                                <div class="col-sm-1 col-xs-1 avatar">
+                                    <img src="/img/avatar2.png" class="img-responsive rounded-circle" width="50" height="50">
+                                </div>
+                                <div class="col-sm-6 col-xs-6 rounded shadow mr-auto" style="background-color: #d9c8c0">
+                                    <div class="p-2 messages msg_sent">
+                                        <p class="card-text">
+                                            @(response.Response)
+                                        </p>
+                                        <time class="text-muted text-left"> @(response.ResponseDate)</time>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+            }
+        </div>
+        <div class="card-footer">
+            <div class="input-group ">
+                <input id="btn-input" name="sendDescriptionResponse" @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "") type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                <span class="input-group-btn">
+                    <button type="submit" @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "") name="sendResponse" value="sendResponse" class="btn btn-primary btn" id="btn-chat"><i class="fas fa-paper-plane"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group d-inline">
+        <div class="form-group row">
+            <div class="col-sm-10 ">
+                <button type="submit" name="openRequest" value="openRequest" @(Model.Request.RequestStatus == Request.EnumRequestStatus.Waiting ? "disabled" : "" ) class="btn btn-success">Open Request</button>
+                <button type="submit" name="closeRequest" value="closeRequest" @(Model.Request.RequestStatus == Request.EnumRequestStatus.Closed ? "disabled" : "" ) class="btn btn-danger">Close Request</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="card  shadow mt-3 mb-3">
+    <div class="card-header bg-dark">
+        Files
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="dataTable" class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td style="width:30px;">File Name</td>
+                            <td style="width:30px;">File Extension</td>
+                            <td style="width:max-content;">Download Link</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.FilesDownload.Count() > 0)
+                        {
+                            @foreach (var file in Model.FilesDownload)
+                            {
+                                if (Model.Request.Id == file.RequestId)
+                                {
+                                    <tr>
+                                        <td style="width:20px;">@file.Id</td>
+                                        <td style="width:150px;">@file.FileName</td>
+                                        <td style="width:150px;">@file.FileExtension</td>
+                                        <td style="width:150px;">
+                                            <a href="~/files/@file.FileName" download>
+                                                <button type="button" class="btn btn-primary">Download</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <h3>No File</h3>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card  shadow mt-3 mb-3">
+    <div class="card-header bg-dark">
+        Request Added To Department History
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="requestDepartmentAdded" class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td style="width:30px;">Department Name</td>
+                            <td style="width:30px;">Added Date</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.RequestDepartments.Count() > 0)
+                        {
+
+                            @foreach (var requestDepartment in Model.RequestDepartments)
+                            {
+                                @if (requestDepartment.RequestId == Model.Request.Id)
+                                {
+                                    @foreach (var department in Model.Departments)
+                                    {
+                                        if (department.Id == requestDepartment.DepartmentId)
+                                        {
+                                            <tr>
+                                                <td style="width:20px;">@requestDepartment.Id</td>
+                                                <td style="width:150px;">@department.Name</td>
+                                                <td style="width:150px;">@requestDepartment.AddedDate</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <h3>No History</h3>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card  shadow mt-3 mb-3">
+    <div class="card-header bg-dark">
+        Request Added To Employee History
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="requestDepartmentAdded" class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td style="width:30px;">User Name</td>
+                            <td style="width:30px;">Added Date</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(Model.EmployeeRequests.Count() > 0 && Model.EmployeeRequests!=null)
+                        {
+
+                            @foreach (var employeeRequests in Model.EmployeeRequests)
+                            {
+                                @if (employeeRequests.RequestId == Model.Request.Id)
+                                {
+                                    @foreach (var user in Model.Users)
+                                    {
+                                        if (user.Id == employeeRequests.EmployeeId)
+                                        {
+                                            <tr>
+                                                <td style="width:20px;">@employeeRequests.Id</td>
+                                                <td style="width:150px;">@user.FirstName @user.LastName</td>
+                                                <td style="width:150px;">@employeeRequests.AddedDate</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning">
+                                <h3>No Employee</h3>
+                            </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
