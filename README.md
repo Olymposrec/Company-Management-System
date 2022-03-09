@@ -7,6 +7,7 @@
 - You can add company.
 <br>
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/1.gif)
+<br>
 - You can add employees to the company.
 - You can define a service to the company.
 - You can create a department.
