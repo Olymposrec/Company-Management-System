@@ -1,7 +1,7 @@
 # Company-Management-System
  A system that enables companies to define and monitor services. 
  
- ## Dont Forget:
+ ## Don't Forget:
  
  First of all you must create migrations.
  Position on BusinessApp.DataAccess
@@ -9,11 +9,16 @@
  $ dotnet ef migrations add NewInitialCreate --context BusinessAppContext --startup-project ../BusinessApp.WebUI
  $ dotnet ef database update --context BusinessAppContext --startup-project ../BusinessApp.WebUI
  </pre>
+ ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/1.png) <br>
+  ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/2.png) <br>
  Position on BusinessApp.WebUI
  <pre>
  $ dotnet ef migrations add NewIdentityUser --context ApplicationContext --startup-project ../BusinessApp.WebUI
  $ dotnet ef database update --context ApplicationContext --startup-project ../BusinessApp.WebUI
  </pre>
+ 
+ Configure appsettings.json file for yourself.
+ 
  
 ## What this system does:
 
