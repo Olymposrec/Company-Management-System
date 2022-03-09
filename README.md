@@ -34,7 +34,9 @@ You can create a service.<br>
 <hr>
 You can define services to companies.<br>
 You can create user (user, employee, admin). <br>
+
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/6.gif)<br>
+
 <hr>
 You can answer requests.<br>
 You can assign requests to employees.<br>
@@ -49,6 +51,7 @@ You can list program logs.<br>
 You can assign requests to employees in your department.<br>
 You can assign requests to other departments.<br>
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/18.gif)<br>
+
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/19.gif)<br>
 <hr>
 
