@@ -4,7 +4,7 @@
 ## What this system does:
 
 ### As Admin:
-You can add company.
+You can add company. <br>
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/1.gif)
 
 - You can add employees to the company.
