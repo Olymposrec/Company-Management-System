@@ -5,6 +5,7 @@
 
 ### As Admin:
 - You can add company.
+![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/1.gif)
 - You can add employees to the company.
 - You can define a service to the company.
 - You can create a department.
