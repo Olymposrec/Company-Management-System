@@ -40,7 +40,9 @@ You can answer requests.<br>
 You can assign requests to employees.<br>
 You can assign assigned requests to employees or departments.<br>
 You can list program logs.<br>
+
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/10.gif)<br>
+
 <hr>
 
 ### As an Employee:
