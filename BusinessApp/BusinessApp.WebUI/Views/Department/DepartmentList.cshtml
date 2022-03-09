@@ -1,0 +1,106 @@
+﻿@model DepartmentModel
+@if (Model.Departments.Count() > 0)
+{
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <a href="#collapseDefaultDepartment" class="card-link p-1" data-toggle="collapse">
+                    Default Department
+                </a>
+            </div>
+            <div id="collapseDefaultDepartment" class="collapse show">
+                <div class="card-cody">
+                    <form asp-controller="Department" asp-action="DefineDepartmentToDefault" method="post">
+                        <div class="row p-5">
+                            <div class="col-md-4">
+
+                                @if (Model.Departments.Count() > 0)
+                                {
+                                    <div class="input-group">
+                                        <select name="departmentId" id="departmentId" class="custom-select">
+                                            <option selected>Select A Department</option>
+                                            @foreach (var department in Model.Departments)
+                                            {
+                                                if (department.isDeleted == false)
+                                                {
+                                                    <option value="@department.Id">@department.Name</option>
+                                                }
+
+                                            }
+                                        </select>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                    <button type="submit" class="btn btn-success">Set Department To Default</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="card  shadow">
+    <div class="card-header bg-dark">
+        <a href="#collapseDepartmentList" class="card-link p-1" data-toggle="collapse">
+            Departments List
+        </a>
+    </div>
+    <div id="collapseDepartmentList" class="collapse show">
+        <div class="card-body table-responsive-sm">
+            <div class="row">
+                <div class="col-md-12">
+                    <table id="dataTable" class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td style="width:500px;">Name</td>
+                                <td style="width:500px;">Is Default</td>
+                                <td style="width:min-content;">Options</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Departments.Count() > 0)
+                            {
+                                @foreach (var department in Model.Departments)
+                                {
+                                    if (department.isDeleted == false)
+                                    {
+                                        <tr>
+                                            <td style="width:20px;">@department.Id</td>
+                                            <td style="width:150px;">@department.Name</td>
+                                            <td style="width:150px;" class="@(department.isDefault==true ? "bg-primary":"bg-secondary")">@department.isDefault</td>
+                                            <td style="width:20px;">
+                                                <a href="/Department/@department.Id" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                                <form action="/Department/DepartmentDelete" method="post" class="d-inline">
+                                                    <input type="hidden" name="departmentId" value="@department.Id" />
+                                                    <input type="hidden" name="Name" value="@department.Name" />
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning">
+                                    <h3>No Department</h3>
+                                </div>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

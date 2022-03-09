@@ -1,0 +1,88 @@
+﻿@model UsersApplicationModel
+@{
+    Layout = "_AccountLayout";
+}
+<div class="login-box">
+    <div class="login-logo">
+        <a href="~/img/AdminLTELogo.png"><b>Company</b>App</a>
+    </div>
+    <div class="card">
+        <div class="card-body login-card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            <p class="login-box-msg">Application Page</p>
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <div class="form-group row">
+                    <label asp-for="FirstName" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="FirstName" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="LastName" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="LastName" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="PhoneNumber" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="PhoneNumber" id="phoneNumber" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Email" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Password" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="RePassword" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="RePassword" />
+                        <span asp-validation-for="RePassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="CompanyName" class="col-sm-4 col-form-label"></label>
+                    <div class="col-sm-8">
+                        <input class="form-control" asp-for="CompanyName" />
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-sm btn-outline-success btn-block">Sign Up</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</script>
+@section Scripts{
+    <script src="https://raw.githubusercontent.com/igorescobar/jQuery-Mask-Plugin/master/src/jquery.mask.js"></script>
+    <script>
+        $(document).ready(function ($) {
+            $('.phoneNumber').inputmask('(999)-999-9999');
+        });
+    </script>
+}

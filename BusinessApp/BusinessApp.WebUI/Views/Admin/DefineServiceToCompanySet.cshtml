@@ -1,0 +1,82 @@
+﻿@model CompaniesServiceModel
+<div id="accordion">
+    <div class="card shadow mt-5">
+        <div class="card-header bg-dark">
+            <a href="#collapseCompanySet" class="card-link p-1" data-toggle="collapse">
+                Set Service To Company
+            </a>
+        </div>
+        <div id="collapseCompanySet" class="collapse show">
+            <div class="card-body">
+                <form asp-controller="Admin" asp-action="DefineServiceToCompanySet" method="post">
+                    <div class="row">
+                        <div class="col-md-5">
+                            @if (Model.Companies.Count() > 0)
+                            {
+                                <div class="input-group">
+                                    <select name="companyId" id="companyId" class="custom-select">
+                                        <option selected value="">Select A Company</option>
+                                        @foreach (var company in Model.Companies)
+                                        {
+                                            if (company.isDeleted == false)
+                                            {
+
+                                                <option value="@company.Id">@company.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs">
+                                    <div class="alert alert-warning">
+                                        <small>Company Not Found  </small>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                        <div class="col-md-5">
+                            @if (Model.Services.Count() > 0)
+                            {
+                                <div class="input-group">
+                                    <select name="serviceId" id="serviceId" class="custom-select">
+                                        <option selected value="">Select A Service</option>
+                                        @foreach (var service in Model.Services)
+                                        {
+                                            <option value="@service.Id">@service.ServiceName</option>
+                                        }
+
+
+
+                                    </select>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs">
+                                    <div class="alert alert-info">
+                                        <small>Service Not Found  </small>
+                                        <a class="btn btn-sm btn-success" href="/Admin/Services/Create" role="button">Add Service <i class="fas fa-directions"></i> </a>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group row">
+                                <div class="col-sm-10 offset-sm-2">
+                                    <button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+                                    <button type="submit" name="delete" value="delete" class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

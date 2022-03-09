@@ -1,0 +1,73 @@
+﻿@model RequestsListModel
+@section Styles{
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#UserTable').DataTable();
+        });
+    </script>
+}
+
+<div class="card p-5">
+    <div class="card-header bg-dark">
+        Filter Section
+    </div>
+    <div class="card-cody">
+        <form asp-controller="Service" asp-action="RequestHistory">
+            <div class="form-group">
+                <input type="text" class="form-control " placeholder="Search" name="q" value="" />
+            </div>
+            <button type="submit" class="btn btn-sm btn-danger btn-block">Search</button>
+        </form>
+    </div>
+</div>
+<div class="card p-5">
+    <div class="card-header bg-dark">
+        Users Application List
+    </div>
+    <div class="card-body table-responsive-sm">
+        <table id="UserTable" class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <td style="width:250px;">Service Name</td>
+                    <td style="width:300px;">Title</td>
+                    <td style="width:250px;">Request Date</td>
+                    <td style="width:150px;">Request Status</td>
+                    <td style="width:min-content;">Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Requests.Count() > 0)
+                {
+                    foreach (var request in Model.Requests)
+                    {
+                        @if (request.UserId == Model.User.Id)
+                        {
+
+                            <tr class="@(request.RequestStatus==Request.EnumRequestStatus.Waiting ? "bg-info":
+                                       request.RequestStatus==Request.EnumRequestStatus.Accepted ? "bg-success":
+                                       request.RequestStatus==Request.EnumRequestStatus.Closed ? "bg-danger":"")">
+                                <td>@request.Title</td>
+                                <td>@request.RequestDate</td>
+                                <td>@request.RequestStatus</td>
+                                <td>
+                                    <a href="/Admin/RequestDetail/@request.Id" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No Applications</h3>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

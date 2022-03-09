@@ -1,0 +1,59 @@
+﻿@model IEnumerable<User>
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
+}
+<div class="card shadow mt-5">
+    <div class="card-header bg-dark">
+        Admin Users List
+    </div>
+    <div class="card-body table-responsive-sm">
+        <table id="dataTable" class="table table-bordered mt-3 w-100">
+            <thead>
+                <tr>
+                    <td style="width:30px;">FirstName</td>
+                    <td style="width:30px;">LastName</td>
+                    <td style="width:30px;">PhoneNumber</td>
+                    <td style="width:30px;">Email</td>
+                    <td style="width:30px;">EmailConfirmed</td>
+                    <td style="width:max-content;">Options</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td style="width:40px;">@user.FirstName</td>
+                            <td style="width:40px;">@user.LastName</td>
+                            <td style="width:50px;">@user.PhoneNumber</td>
+                            <td style="width:60px;">@user.Email</td>
+                            <td style="width:20px;">@user.EmailConfirmed</td>
+                            <td style="width:20px;">
+                                <a href="/Admin/Users/@user.Id" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <form action="/Admin/UserDelete" method="post" class="d-inline">
+                                    <input type="hidden" name="Id" value="@user.Id" />
+                                    <input type="hidden" name="FirstName" value="@user.FirstName" />
+                                    <input type="hidden" name="LastName" value="@user.LastName" />
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No User</h3>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
