@@ -95,5 +95,17 @@ You can view your requests. <br>
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/16.gif)<br>
 <hr>
 
+I wrote code that runs at certain times using the "hangfire" and "serilog" libraries. 
+
+By keeping "log" records, when there is a problem, we can view them and take the necessary measures. 
+
+Recurring Jobs: <br>
+![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/hangfiredashboard.png) <br>
+My Scheduled and Delayed Jobs: <br>
+![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/schedulejobonhangfire.png) <br>
+
+Log list: <br>
+![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/sserilog.png) <br>
+
 
 
