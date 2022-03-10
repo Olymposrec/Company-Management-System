@@ -17,7 +17,8 @@
  $ dotnet ef database update --context ApplicationContext --startup-project ../BusinessApp.WebUI
  </pre>
  
- Configure appsettings.json file for yourself.
+ Configure appsettings.json file for yourself. <br>
+ ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/appsettingjson.png) <br>
  
  
 ## What this system does:
@@ -93,4 +94,6 @@ You can create a request.<br>
 You can view your requests. <br>
 ![alt text](https://github.com/Olymposrec/Company-Management-System/blob/main/gifs/16.gif)<br>
 <hr>
+
+
 
